@@ -3,12 +3,10 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import seaborn as sns
 from datetime import datetime
-#Deprecaction -- To update with newest method
-st.set_option('deprecation.showPyplotGlobalUse', False)
+
 #General Analysis
 st.title("Video Game EDA")
 activity = ["Basico EDA", "Multiplataforma","Geografía","Género","ESRB","Acuerdo"]
