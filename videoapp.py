@@ -6,7 +6,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import seaborn as sns
 from datetime import datetime
-
+st.set_option('deprecation.showPyplotGlobalUse', False)
 #General Analysis
 st.title("Video Game EDA")
 activity = ["Basico EDA", "Multiplataforma","Geografía","Género","ESRB","Acuerdo"]
@@ -41,12 +41,12 @@ def main():
         if st.checkbox('¿En qué plataforma me debería enfocar?'):
         #Data clean
             dfpivot = pd.pivot_table(df0, values='Global_Sales', index=['Year'], columns='Platform')
-            dfpivot['Globalsales'] = dfpivot.iloc[:].sum(axis=1)
+            dfpivot['Global_Sales'] = dfpivot.iloc[:].sum(axis=1)
             dfpivot5 = dfpivot.iloc[-2:]
             dfpivot5 = dfpivot5.dropna(axis=1, how='all')
             fig, ax = plt.subplots(figsize=(6, 3), subplot_kw=dict(aspect="equal"))
             platforms = list(dfpivot5.columns)
-            gsales = list(dfpivot5.Globalsales)
+            gsales = list(dfpivot5.Global_Sales)
 
             #Gráfico - Multiplataforma
             def func(pct, allvals):
@@ -63,7 +63,7 @@ def main():
 
             plt.setp(autotexts, size=8, weight="bold")
 
-            ax.set_title("Multiplataforma según ventas globales últimos en los últimos 2 años")
+            ax.set_title("% Multiplataforma según ventas globales en los últimos 2 años")
             st.pyplot()
 
     elif choice == "Geografía":
